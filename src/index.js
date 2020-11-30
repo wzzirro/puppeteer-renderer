@@ -6,7 +6,7 @@ const { URL } = require("url");
 const contentDisposition = require("content-disposition");
 const createRenderer = require("./renderer");
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3100;
 
 const app = express();
 
@@ -16,6 +16,9 @@ let renderer = null;
 app.set("query parser", (s) => qs.parse(s, { allowDots: true }));
 app.disable("x-powered-by");
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 // Render url.
 app.use(async (req, res, next) => {
   let { url, type, filename, ...options } = req.body;

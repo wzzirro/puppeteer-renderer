@@ -108,9 +108,9 @@ class Renderer {
       await this.closePage(page);
     });
 
-    if (emulateMedia) {
-      await page.emulateMedia(emulateMedia);
-    }
+    // if (emulateMedia) {
+    //   await page.emulateMedia(emulateMedia);
+    // }
 
     if (credentials) {
       await page.authenticate(credentials);
